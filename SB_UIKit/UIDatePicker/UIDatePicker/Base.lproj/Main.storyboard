@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UIDatePicker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="nSi-5D-Rbu">
+                                <rect key="frame" x="47" y="94" width="320" height="215"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="Jdk-mQ-BSV"/>
+                                    <constraint firstAttribute="height" constant="215" id="OZL-lt-8W8"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="changeDate:" destination="BYZ-38-t0r" eventType="valueChanged" id="x9e-73-r3f"/>
+                                </connections>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxo-Sx-YUm">
+                                <rect key="frame" x="157" y="379" width="100" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="NiG-k2-Ldo"/>
+                                    <constraint firstAttribute="height" constant="50" id="PPo-Fb-4o3"/>
+                                </constraints>
+                                <state key="normal" title="WRITE DATE">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="writeDate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WUa-xF-Zwh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roT-Dj-HkW">
+                                <rect key="frame" x="82" y="499" width="250" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="fXe-03-GCH"/>
+                                    <constraint firstAttribute="height" constant="50" id="zay-Dn-E9e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="roT-Dj-HkW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Eo1-3i-Hy7"/>
+                            <constraint firstItem="nSi-5D-Rbu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QhX-pt-W5D"/>
+                            <constraint firstItem="lxo-Sx-YUm" firstAttribute="top" secondItem="nSi-5D-Rbu" secondAttribute="bottom" constant="70" id="UXj-it-ic5"/>
+                            <constraint firstItem="nSi-5D-Rbu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="dix-tP-cQM"/>
+                            <constraint firstItem="roT-Dj-HkW" firstAttribute="top" secondItem="lxo-Sx-YUm" secondAttribute="bottom" constant="70" id="fir-Yo-F1e"/>
+                            <constraint firstItem="lxo-Sx-YUm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vSC-dy-CCe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="lxo-Sx-YUm" id="wis-Bm-5dO"/>
+                        <outlet property="datePicker" destination="nSi-5D-Rbu" id="JEK-h2-mDt"/>
+                        <outlet property="label" destination="roT-Dj-HkW" id="aAc-IV-nP4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+</document>
