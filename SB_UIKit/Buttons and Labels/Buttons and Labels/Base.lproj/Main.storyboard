@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Buttons_and_Labels" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vV5-95-B38">
+                                <rect key="frame" x="132" y="564" width="150" height="50"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MQq-UX-lse"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLa-im-L65">
+                                <rect key="frame" x="132" y="464" width="150" height="50"/>
+                                <state key="normal" title="Action 2">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="edX-MC-7xv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIk-3J-oBb">
+                                <rect key="frame" x="132" y="364" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="Wxb-y6-OPQ"/>
+                                    <constraint firstAttribute="height" constant="50" id="xTt-hI-eeU"/>
+                                </constraints>
+                                <state key="normal" title="Action 1">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xxf-Mp-as2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0l-ph-fon">
+                                <rect key="frame" x="57" y="144" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="45A-6i-S29"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="SUS-a0-6qk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mLa-im-L65" firstAttribute="width" secondItem="PIk-3J-oBb" secondAttribute="width" id="6gQ-j5-EoX"/>
+                            <constraint firstItem="k0l-ph-fon" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="CT3-lK-cJH"/>
+                            <constraint firstItem="mLa-im-L65" firstAttribute="height" secondItem="PIk-3J-oBb" secondAttribute="height" id="I2A-Ce-Jai"/>
+                            <constraint firstItem="vV5-95-B38" firstAttribute="top" secondItem="mLa-im-L65" secondAttribute="bottom" constant="50" id="PEw-KP-Zxu"/>
+                            <constraint firstItem="vV5-95-B38" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Q0t-qA-quZ"/>
+                            <constraint firstItem="PIk-3J-oBb" firstAttribute="top" secondItem="k0l-ph-fon" secondAttribute="bottom" constant="170" id="UfW-Wn-naf"/>
+                            <constraint firstItem="mLa-im-L65" firstAttribute="top" secondItem="PIk-3J-oBb" secondAttribute="bottom" constant="50" id="c1j-4C-Dw7"/>
+                            <constraint firstItem="k0l-ph-fon" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="ma3-Po-SZw"/>
+                            <constraint firstItem="vV5-95-B38" firstAttribute="width" secondItem="mLa-im-L65" secondAttribute="width" id="o08-jL-ncg"/>
+                            <constraint firstItem="mLa-im-L65" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="shk-tL-keW"/>
+                            <constraint firstItem="PIk-3J-oBb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="vQZ-az-si7"/>
+                            <constraint firstItem="vV5-95-B38" firstAttribute="height" secondItem="mLa-im-L65" secondAttribute="height" id="xcw-7i-4KM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="vV5-95-B38" id="C5y-Ep-xTl"/>
+                        <outlet property="label" destination="k0l-ph-fon" id="MnZ-lY-21t"/>
+                        <outletCollection property="actionsButtons" destination="PIk-3J-oBb" collectionClass="NSMutableArray" id="Z1L-L8-MLV"/>
+                        <outletCollection property="actionsButtons" destination="mLa-im-L65" collectionClass="NSMutableArray" id="i3a-vy-myY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-65.217391304347828" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+</document>
