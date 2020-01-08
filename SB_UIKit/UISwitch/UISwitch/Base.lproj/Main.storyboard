@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UISwitch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="40e-aG-hbc">
+                                <rect key="frame" x="33" y="62" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchActionNew:" destination="BYZ-38-t0r" eventType="valueChanged" id="6gk-Z6-bMe"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HIDE THIS TEXT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cd5-cu-IeA">
+                                <rect key="frame" x="82" y="189" width="250" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="9Ic-2z-Mku"/>
+                                    <constraint firstAttribute="height" constant="40" id="t6G-TC-A3S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide element" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WiX-MK-WPv">
+                                <rect key="frame" x="172" y="67" width="200" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WiX-MK-WPv" firstAttribute="leading" secondItem="40e-aG-hbc" secondAttribute="trailing" constant="90" id="25F-Z0-k4o"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WiX-MK-WPv" secondAttribute="trailing" constant="42" id="76c-Br-Ejl"/>
+                            <constraint firstItem="WiX-MK-WPv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="23" id="9Y4-ii-nYo"/>
+                            <constraint firstItem="Cd5-cu-IeA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="145" id="G2G-U4-9yv"/>
+                            <constraint firstItem="40e-aG-hbc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="18" id="NrX-rL-Nel"/>
+                            <constraint firstItem="40e-aG-hbc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="33" id="azZ-1S-Kw3"/>
+                            <constraint firstItem="Cd5-cu-IeA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fWT-uG-cNT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="hideLabel" destination="Cd5-cu-IeA" id="96x-Df-yT1"/>
+                        <outlet property="label" destination="WiX-MK-WPv" id="GCm-Ne-gmV"/>
+                        <outlet property="simpleSwitch" destination="40e-aG-hbc" id="grS-T0-yft"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+</document>
