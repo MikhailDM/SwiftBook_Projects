@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6uk-vz-M0d">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--First Screen-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UITabBar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First ViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsn-9i-aej">
+                                <rect key="frame" x="45" y="314.5" width="285.5" height="38.5"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="32"/>
+                                <color key="textColor" red="0.99990516901016235" green="1" blue="0.99987047910690308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rsn-9i-aej" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MFa-n0-OzP"/>
+                            <constraint firstItem="rsn-9i-aej" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hUm-qt-KNE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="First Screen" image="1" springLoaded="YES" id="5MX-jb-lYl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3513" y="-573"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="cvh-xb-rWU">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6uk-vz-M0d" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aXi-PA-gBz">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Dj0-yf-0Je"/>
+                        <segue destination="F1N-nI-lPJ" kind="relationship" relationship="viewControllers" id="4Ls-ji-D8p"/>
+                        <segue destination="0DC-Qu-Onp" kind="relationship" relationship="viewControllers" id="klC-Cu-tO5"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xZy-2U-lW6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2584.8000000000002" y="-213.64317841079463"/>
+        </scene>
+        <!--Second Screen-->
+        <scene sceneID="DTR-lb-6jr">
+            <objects>
+                <viewController id="F1N-nI-lPJ" customClass="SecondViewController" customModule="UITabBar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LyS-Cm-P6D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second ViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUa-9t-ePs">
+                                <rect key="frame" x="24" y="314" width="326" height="39"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="32"/>
+                                <color key="textColor" red="0.99990516901016235" green="1" blue="0.99987047910690308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="OUa-9t-ePs" firstAttribute="centerY" secondItem="LyS-Cm-P6D" secondAttribute="centerY" id="bUp-uD-OCz"/>
+                            <constraint firstItem="OUa-9t-ePs" firstAttribute="centerX" secondItem="LyS-Cm-P6D" secondAttribute="centerX" id="nKL-Nf-C5l"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dsU-r8-rGF"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Second Screen" image="2" id="2Ou-Hn-Tnd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dd9-g5-K0c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3522" y="131"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="i77-ep-Pts">
+            <objects>
+                <viewController id="0DC-Qu-Onp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vbU-pz-vuV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="v0F-zI-c6y"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="pv5-ni-2aV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="91R-Tt-Vjc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4387" y="-150"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="1" width="24" height="24"/>
+        <image name="2" width="30" height="24"/>
+    </resources>
+</document>

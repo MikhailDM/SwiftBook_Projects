@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Page View Controller-->
+        <scene sceneID="9l0-tO-b2f">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="VV2-HT-Zep" customClass="PageViewController" customModule="UIPageView" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="od0-XD-vxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-964" y="103"/>
+        </scene>
+        <!--Content Page View Controller-->
+        <scene sceneID="vBR-Pg-WWQ">
+            <objects>
+                <viewController storyboardIdentifier="ContentPageViewController" id="TyD-Rh-xDZ" customClass="ContentPageViewController" customModule="UIPageView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1KW-ng-VUY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Много, много, много текста" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlG-Nn-MZ4">
+                                <rect key="frame" x="9.5" y="127" width="355" height="30.5"/>
+                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="24"/>
+                                <color key="textColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="hz0-vb-a5W">
+                                <rect key="frame" x="168" y="630" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="currentPageIndicatorTintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✌️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUI-gk-fUd">
+                                <rect key="frame" x="133" y="273" width="108" height="120"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.71414999670000001" green="0.91021839339999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="dlG-Nn-MZ4" firstAttribute="centerX" secondItem="yLE-1n-EPG" secondAttribute="centerX" id="AUa-Ed-FwH"/>
+                            <constraint firstItem="hz0-vb-a5W" firstAttribute="centerX" secondItem="yLE-1n-EPG" secondAttribute="centerX" id="FVG-Ai-Kw3"/>
+                            <constraint firstItem="CUI-gk-fUd" firstAttribute="centerY" secondItem="yLE-1n-EPG" secondAttribute="centerY" constant="-10.5" id="IqS-lS-FWP"/>
+                            <constraint firstItem="CUI-gk-fUd" firstAttribute="centerX" secondItem="yLE-1n-EPG" secondAttribute="centerX" id="M7t-Zp-XxD"/>
+                            <constraint firstItem="dlG-Nn-MZ4" firstAttribute="top" secondItem="yLE-1n-EPG" secondAttribute="top" constant="107" id="Z2b-6u-fcC"/>
+                            <constraint firstItem="dlG-Nn-MZ4" firstAttribute="width" secondItem="1KW-ng-VUY" secondAttribute="width" constant="-20" id="n1H-gB-Rna"/>
+                            <constraint firstItem="hz0-vb-a5W" firstAttribute="bottom" secondItem="yLE-1n-EPG" secondAttribute="bottom" id="nLH-y4-Zxx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yLE-1n-EPG"/>
+                    </view>
+                    <connections>
+                        <outlet property="emojiLabel" destination="CUI-gk-fUd" id="bcx-e5-yH7"/>
+                        <outlet property="label" destination="dlG-Nn-MZ4" id="46W-z4-hc6"/>
+                        <outlet property="pageControl" destination="hz0-vb-a5W" id="uTS-0z-ogM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lc9-Mc-fBZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-271" y="103"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UIPageView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWy-Pq-y3i">
+                                <rect key="frame" x="67" y="304" width="241" height="58"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="48"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.71414999670000001" green="0.91021839339999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="JWy-Pq-y3i" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tAc-Eu-0eH"/>
+                            <constraint firstItem="JWy-Pq-y3i" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-10.5" id="vf7-pV-OAP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1978" y="103"/>
+        </scene>
+    </scenes>
+</document>
