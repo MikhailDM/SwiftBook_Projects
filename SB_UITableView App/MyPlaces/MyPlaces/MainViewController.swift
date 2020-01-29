@@ -7,33 +7,40 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UITableViewController {
     
+    //Тип библиотеки Realm - массив
+    var places: Results<Place>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        places = realm.objects(Place.self)
     }
-    
-    let places = Place.getPlaces()
 
     // MARK: - Table view data source
 
     //Возвращает количество строк в секции
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return places.count
+        return places.isEmpty ? 0 : places.count
     }
+ 
 
     //Конфигурация ячейки
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Приведение ячейки к кастомногу классу
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
         
+        let place = places[indexPath.row]
+        
         //Присваиваем текст из массива ячейкам
-        cell.nameLabel.text = places[indexPath.row].name
-        cell.locationLabel.text = places[indexPath.row].location
-        cell.typeLabel.text = places[indexPath.row].type
-        cell.imageOfPlace.image = UIImage.init(named: places[indexPath.row].image)
+        cell.nameLabel.text = place.name
+        cell.locationLabel.text = place.location
+        cell.typeLabel.text = place.type
+        cell.imageOfPlace.image = UIImage(data: place.imageData!)
+        
         //Скругление ImageView
         cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
         //Скругление картинки по скругленному ImageView
@@ -52,5 +59,12 @@ class MainViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
+        guard let newPlaceVC = segue.source as? NewPlaceViewController else {return}
+        
+        newPlaceVC.saveNewPlace()        
+        tableView.reloadData()
+    }
 
 }
