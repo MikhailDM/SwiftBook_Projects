@@ -4,4 +4,4 @@
 ### EmojiReader
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_Collection/_Screenshots/EmojiReader/All.jpg)
 ### PhotoTapps
-![Альтернативный текст]()
+![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_Collection/_Screenshots/PhotoTapps/All.jpg)
