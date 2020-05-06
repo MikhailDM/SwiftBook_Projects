@@ -13,6 +13,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var secondNameLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     
+    var viewModel: ViewModel! {
+        didSet {
+            self.nameLabel.text = viewModel.name
+            self.secondNameLabel.text = viewModel.secondName
+            self.ageLabel.text = viewModel.age
+        }
+    }
+    
+    /*
+    //Профиль. При изменении назначает текст лейблам
     var profile: Profile? {
         didSet {
             guard let profile = profile else {return}
@@ -21,12 +31,12 @@ class ViewController: UIViewController {
             self.ageLabel.text = "\(profile.age)"
         }
     }
+    */
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        profile = Profile(name: "John", secondName: "Smith", age: 33)
+        viewModel = ViewModel()
     }
 
 
