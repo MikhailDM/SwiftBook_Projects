@@ -28,5 +28,5 @@
 Основы сохранения для TableView
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_CoreData/_Screenshots/CoreDataDemo/All.jpg)
 ### MyCars/MealTime
-Еще несколько прложений по работе с Core Data
+Еще несколько приложений по работе с Core Data
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_CoreData/_Screenshots/MyCars%20%2B%20MealTime/All.jpg)
