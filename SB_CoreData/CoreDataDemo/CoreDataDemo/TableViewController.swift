@@ -7,57 +7,142 @@
 //
 
 import UIKit
+import CoreData
 
 class TableViewController: UITableViewController {
     
-    var toDoItems = [Task]()
+    //Массив задач
+    var tasks = [Task]()
 
-    @IBAction func addTask(_ sender: UIBarButtonItem) {
-        
+    @IBAction func saveTask(_ sender: UIBarButtonItem) {
+        //Алерт контроллер по нажатию
         let ac = UIAlertController(title: "Add Task", message: "Add new task", preferredStyle: .alert)
+        //Кнопка
         let ok = UIAlertAction(title: "Ok", style: .default) { action in
-            let textField = ac.textFields?[0]
-            self.saveTask(taskToDo: ((textField?.text)!)
-            //self.toDoItems.insert((textField?.text)!, at: 0)
-            self.tableView.reloadData()
+            let tf = ac.textFields?.first
+            if let newTaskTitle = tf?.text {
+                self.saveTask(withTitle: newTaskTitle)
+                self.tableView.reloadData()
+            }
         }
-        
+        //Кнопка отмены
         let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        //Текстоое поля ввода
         ac.addTextField {
             textField in
         }
         
+        //Добавляем действия в контроллер и показываем его
         ac.addAction(ok)
         ac.addAction(cancel)
         present(ac, animated: true, completion: nil)
     }
     
-    func saveTask(taskToDo: String) {
+    @IBAction func removeAllPressed(_ sender: UIBarButtonItem) {
+        //Алерт контроллер по нажатию
+        let ac = UIAlertController(title: "Remove All", message: "Удалить все задачи", preferredStyle: .alert)
+        //Кнопка
+        let ok = UIAlertAction(title: "Ok", style: .default) { action in
+            self.delAllTasks()
+        }
+        //Кнопка отмены
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         
+        
+        //Добавляем действия в контроллер и показываем его
+        ac.addAction(ok)
+        ac.addAction(cancel)
+        present(ac, animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    
+    
+// MARK: - МЕТОД СОХРАНЕНИЯ В CORE DATA
+    private func saveTask(withTitle title: String) {
+        //Получаем контекст
+        let context = getContext()
+        //Извлекаем сущность
+        guard let entity = NSEntityDescription.entity(forEntityName: "Task", in: context) else { return }
+        //Достаем обьект
+        let taskObject = Task(entity: entity, insertInto: context)
+        taskObject.title = title
+        //Сохраняем обьект
+        do {
+            try context.save()
+            tasks.append(taskObject)
+            //self.tableView.reloadData()
+        } catch let error as NSError{
+            print(error.localizedDescription)
+        }
     }
+    
+    private func delAllTasks() {
+        //Метод удаления всего из базы
+        //Получаем контекст
+        let context = getContext()
+        //Запрос
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        //Удаляем все данные
+        if let objects = try? context.fetch(fetchRequest) {
+            for object in objects {
+                context.delete(object)
+            }
+        }
+        //Сохраняем обьект
+        do {
+            try context.save()
+            //Очищаем список
+            tasks.removeAll()
+            self.tableView.reloadData()
+        } catch let error as NSError{
+            print(error.localizedDescription)
+        }
+    }
+    
 
-    // MARK: - Table view data source
+    
+    
+// MARK: - LOADING
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //Получаем контекст
+        let context = getContext()
+        //Запрос
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        //Сортировка при загрузке
+        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        //Присваиваем нашему массиву данные из CoreData
+        do {
+            tasks = try context.fetch(fetchRequest)
+        } catch let error as NSError{
+            print(error.localizedDescription)
+        }
+    }
+    
+    //Получение контекста
+    private func getContext() -> NSManagedObjectContext {
+        //Ссылка на делегат
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        //Контекст
+        return appDelegate.persistentContainer.viewContext
+    }
+   
+    
+    
+
+// MARK: - Table view data source
 
     //Количество секций
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     //Конкретная запись в конкретную ячейку
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return toDoItems.count
+        return tasks.count
     }
 
     //Создает ячейку
@@ -65,56 +150,9 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         //Помещяем в конкретную ячейку конкретную запись
-        let task = toDoItems[indexPath.row]
-        cell.textLabel?.text = task.taskToDo
-
+        let task = tasks[indexPath.row]
+        //Присваиваем title
+        cell.textLabel?.text = task.title
         return cell
     }
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
