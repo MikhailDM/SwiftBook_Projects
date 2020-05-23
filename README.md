@@ -8,7 +8,7 @@
 + [SB_MVС. Изучаем Паттерн MVC](#SB_MVС)
 + [SB_UIKit. Курс по UIKit](#SB_UIKit)
 + [SB_CoreData. Изучаем Основы Core Data](#SB_CoreData)
-+ [SB_In-App Purchases. Встроенные Покупки (In-App Purchases)](#SB_IAP)
++ [SB_In-App Purchases. Встроенные Покупки](#SB_IAP)
 
 >## <a name="SB_API"></a> SB_API. Работа С API
 ### Sunny[Parse JSON][Delegates][CoreLocation]
