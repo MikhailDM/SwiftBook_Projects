@@ -8,6 +8,7 @@
 + [SB_MVС. Изучаем Паттерн MVC](#SB_MVС)
 + [SB_UIKit. Курс по UIKit](#SB_UIKit)
 + [SB_CoreData. Изучаем Основы Core Data](#SB_CoreData)
++ [SB_In-App Purchases. Встроенные Покупки (In-App Purchases)](#SB_IAP)
 
 >## <a name="SB_API"></a> SB_API. Работа С API
 ### Sunny[Parse JSON][Delegates][CoreLocation]
@@ -40,3 +41,7 @@
 >## <a name="SB_CoreData"></a> SB_CoreData. Изучаем Основы Core Data
 ### CoreDataDemo/MyCars/MealTime[CoreData][UITableView]
 Основы работы с CoreData
+
+>## <a name="SB_IAP"></a> SB_In-App Purchases. Встроенные Покупки
+### IAPDemo[In-App Purchases][NotificationCenter]
+Работа с покупками внутри приложения
