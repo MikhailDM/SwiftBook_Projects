@@ -34,7 +34,7 @@ struct CurrentWeather {
         default: return "nosign"
         }
     }
-    
+    //Инициализатор принимающий currentWeatherData
     init?(currentWeatherData: CurrentWeatherData) {
         cityName = currentWeatherData.name
         temperature = currentWeatherData.main.temp

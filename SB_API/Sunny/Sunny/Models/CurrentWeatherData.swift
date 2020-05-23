@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+//Структура данных JSON
 struct CurrentWeatherData: Codable {
     let name: String
     let main: Main
@@ -17,7 +17,8 @@ struct CurrentWeatherData: Codable {
 struct Main: Codable {
     let temp: Double
     let feelsLike: Double
-    
+    //Изменение ключа по которому мы получаем значения JSON
+    //feels_like - в исходнике
     enum CodingKeys: String, CodingKey {
         case temp
         case feelsLike = "feels_like"

@@ -10,12 +10,14 @@ import UIKit
 import CoreLocation
 
 class ViewController: UIViewController {
-
+//MARK: - OUTLETS
     @IBOutlet weak var weatherIconImageView: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var feelsLikeTemperatureLabel: UILabel!
     
+    
+//MARK: - MANAGERS
     var networkWeatherManager = NetworkWeatherManager()
     lazy var locationManager: CLLocationManager = {
         let lm = CLLocationManager()
@@ -24,26 +26,36 @@ class ViewController: UIViewController {
         lm.requestWhenInUseAuthorization()
         return lm
     }()
+
     
+//MARK: - ACTIONS
+    //Кнопка поиска по городу
     @IBAction func searchPressed(_ sender: UIButton) {
         self.presentSearchAlertController(withTitle: "Enter city name", message: nil, style: .alert) { [unowned self] city in
             self.networkWeatherManager.fetchCurrentWeather(forRequestType: .cityName(city: city))
         }
     }
     
+//MARK: - LOADING
     override func viewDidLoad() {
         super.viewDidLoad()
+        //ДЕЛЕГАТЫ
+        networkWeatherManager.delegate = self
         
-        networkWeatherManager.onCompletion = { [weak self] currentWeather in
+        //КЛОУЖЕРЫ
+        //Если мы получаем данные - обновляем интерфейс.
+        /*networkWeatherManager.onCompletion = { [weak self] currentWeather in
             guard let self = self else { return }
             self.updateInterfaceWith(weather: currentWeather)
-        }
+        }*/
         
+        //Запрос геопозиции если сервис геопозиции включен
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestLocation()
         }
     }
     
+    //Обновление интерфейса
     func updateInterfaceWith(weather: CurrentWeather) {
         DispatchQueue.main.async {
             self.cityLabel.text = weather.cityName
@@ -55,7 +67,7 @@ class ViewController: UIViewController {
 }
 
 
-// MARK: - CLLocationManagerDelegate
+// MARK: - CLLocationManagerDelegate. Делегат Location
 
 extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -68,5 +80,16 @@ extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
+    }
+}
+
+
+// MARK: - EXTENSION. NetworkWeatherManagerDelegate
+
+extension ViewController: NetworkWeatherManagerDelegate {
+    func updateInterface(_: NetworkWeatherManager, with currentWeather: CurrentWeather) {
+        //ДЕЛЕГАТЫ
+        //Обновление интерфейса
+        updateInterfaceWith(weather: currentWeather)
     }
 }

@@ -7,5 +7,5 @@
 //
 
 import Foundation
-
-let apiKey = "358389cc2e7b7f987ac85f1075b911c6"
+//Ключ от OpenWeather
+let apiKey = "679151602cd4548fb4e552931568fa89"
