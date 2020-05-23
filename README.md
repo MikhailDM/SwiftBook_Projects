@@ -8,12 +8,11 @@
 + [SB_Sketch. Sketch - Рисуем Интерфейсы](#SB_Sketch)
 + [SB_CoreData. Изучаем Основы Core Data](#SB_CoreData)
 
-
 ## <a name="SB_Collection"></a> SB_Collection. Приложения На Основе Коллекций
->### EmojiReader
+- ### EmojiReader
 Учимся пользоваться списками
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_Collections/_Screenshots/EmojiReader/All.jpg)
->### PhotoTapps
+- ### PhotoTapps
 Учимся пользоваться коллекциями
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_Collections/_Screenshots/PhotoTapps/All.jpg)
 
