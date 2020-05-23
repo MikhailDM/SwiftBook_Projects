@@ -8,7 +8,7 @@
 + [SB_Sketch. Sketch - Рисуем Интерфейсы](#SB_Sketch)
 + [SB_CoreData. Изучаем Основы Core Data](#SB_CoreData)
 
->## <a name="SB_Collection"></a> SB_Collection. Приложения На Основе Коллекций
+## <a name="SB_Collection"></a> SB_Collection. Приложения На Основе Коллекций
 ### EmojiReader
 Учимся пользоваться списками
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_Collections/_Screenshots/EmojiReader/All.jpg)
@@ -16,12 +16,12 @@
 Учимся пользоваться коллекциями
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_Collections/_Screenshots/PhotoTapps/All.jpg)
 
->## <a name="SB_MVVM"></a> SB_MVVM. Изучаем Паттерн MVVM
->### MVVM-1/2/3
+## <a name="SB_MVVM"></a> SB_MVVM. Изучаем Паттерн MVVM
+### MVVM-1/2/3
 3 небольших проекта с архитектурой MVVM
 
 ## <a name="SB_MVС"></a> SB_MVС. Изучаем Паттерн MVC
->### MVC-N
+### MVC-N
 1 небольшой проект с архитектурой MVС
 
 ## <a name="SB_UIKit"></a> SB_UIKit. Курс по UIKit
@@ -32,9 +32,9 @@
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_Sketch/_Screenshots/All.jpg)
 
 ## <a name="SB_CoreData"></a> SB_CoreData. Изучаем Основы Core Data
->### CoreDataDemo
+### CoreDataDemo
 Основы сохранения для TableView
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_CoreData/_Screenshots/CoreDataDemo/All.jpg)
->### MyCars/MealTime
+### MyCars/MealTime
 Еще несколько приложений по работе с Core Data
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_CoreData/_Screenshots/MyCars%20%2B%20MealTime/All.jpg)
