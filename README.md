@@ -7,7 +7,7 @@
 2й уровень.  <a name="SB_Collection">
 --------------------------  
 
-## <a name="SB_Collection">
+## <a name="SB_Collection"></a>
 
 ### EmojiReader
 Учимся пользоваться списками
