@@ -1,8 +1,8 @@
 # Курсы swiftbook.ru
 
-+ [SB_Collection. Приложения На Основе Коллекций](#SB_Collection)
++ [SB_Collection. Приложения На Основе Коллекций](#SBCollection)
 
-## <a name="SB_Collection"></a>
+## <a name="SBCollection"></a>
 ### EmojiReader
 Учимся пользоваться списками
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_Collections/_Screenshots/EmojiReader/All.jpg)
