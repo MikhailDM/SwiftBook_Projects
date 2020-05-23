@@ -41,6 +41,7 @@
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_CoreData/_Screenshots/MyCars%20%2B%20MealTime/All.jpg)
 
 ## <a name="SB_API"></a> SB_API. Работа С API
-### Sunny[Parse JSON][Delegates][CoreLocation]
+### Sunny
+#### [Parse JSON][Delegates][CoreLocation]
 Погода по запросу и по геопозиции
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_API/_Screenshots/Sunny/All.jpg)
