@@ -12,7 +12,7 @@ class NetworkService {
     //Singleton
     private init() {}
     static let shared = NetworkService()
-    
+    //Метод получения информации по URL
     public func getData(url: URL, completion: @escaping (Any) -> ()) {
         //Создем сессию
         let session = URLSession.shared

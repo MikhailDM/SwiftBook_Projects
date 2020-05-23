@@ -28,7 +28,6 @@ struct Comment {
         self.id = id
         self.name = name
         self.email = email
-        self.body = body
-            
+        self.body = body            
     }
 }
