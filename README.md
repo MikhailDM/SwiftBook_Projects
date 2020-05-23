@@ -10,10 +10,10 @@
 
 ## <a name="SB_Collection"></a> SB_Collection. Приложения На Основе Коллекций
 >### EmojiReader
-    Учимся пользоваться списками
+Учимся пользоваться списками
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_Collections/_Screenshots/EmojiReader/All.jpg)
 >### PhotoTapps
-    Учимся пользоваться коллекциями
+Учимся пользоваться коллекциями
 ![Альтернативный текст](https://github.com/MikhailDM/SwiftBook_Projects/blob/master/SB_Collections/_Screenshots/PhotoTapps/All.jpg)
 
 ## <a name="SB_MVVM"></a> SB_MVVM. Изучаем Паттерн MVVM
