@@ -1,13 +1,9 @@
 Курсы swiftbook.ru
 =========================
 
-1. Содержание
 + [SB_Collection. Приложения На Основе Коллекций](#SB_Collection)
 
-2й уровень.  <a name="SB_Collection">
---------------------------  
-
-## <a name="SB_Collection"></a>
+## <a name="SB_Collection"></a> SB_Collection. Приложения На Основе Коллекций
 
 ### EmojiReader
 Учимся пользоваться списками
