@@ -30,7 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AuthServiceDelegate {
         window?.makeKeyAndVisible()
         return true
     }
-
+    
+    //Переадресация на вход через VK
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         VKSdk.processOpen(url, fromApplication: UIApplication.OpenURLOptionsKey.sourceApplication.rawValue)
         return true
