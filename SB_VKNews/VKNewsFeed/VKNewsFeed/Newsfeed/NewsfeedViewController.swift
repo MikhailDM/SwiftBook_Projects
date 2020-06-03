@@ -22,7 +22,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     
     @IBOutlet weak var table: UITableView!    
     
-    // MARK: Setup
+// MARK: Setup
     
     private func setup() {
         let viewController        = self
@@ -36,21 +36,20 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         router.viewController     = viewController
     }
   
-  // MARK: Routing
+// MARK: Routing
   
 
   
-  // MARK: View lifecycle
+// MARK: View lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     //Настройка при загрузке
     setup()
-    
     //Регистрация ячейки
-    //table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseID)
     //Запрос на получение данных
+    //Идем в Interactor
     interactor?.makeRequest(request: .getNewsfeed)
     }
     
