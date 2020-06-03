@@ -10,6 +10,7 @@
 		2726E5292480FCB70047C0D9 /* NewsfeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2726E5282480FCB70047C0D9 /* NewsfeedViewController.storyboard */; };
 		2726E52C248102B70047C0D9 /* NewsfeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726E52B248102B70047C0D9 /* NewsfeedCell.swift */; };
 		2726E52E248103030047C0D9 /* NewsfeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2726E52D248103030047C0D9 /* NewsfeedCell.xib */; };
+		275618AA2487919000E257A3 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275618A92487919000E257A3 /* WebImageView.swift */; };
 		F01351082230066300A34EB4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01351072230066300A34EB4 /* NetworkService.swift */; };
 		F013510A2230169800A34EB4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01351092230169800A34EB4 /* API.swift */; };
 		F01351102232908200A34EB4 /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F013510F2232908200A34EB4 /* FeedResponse.swift */; };
@@ -34,6 +35,7 @@
 		2726E5282480FCB70047C0D9 /* NewsfeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewsfeedViewController.storyboard; sourceTree = "<group>"; };
 		2726E52B248102B70047C0D9 /* NewsfeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCell.swift; sourceTree = "<group>"; };
 		2726E52D248103030047C0D9 /* NewsfeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsfeedCell.xib; sourceTree = "<group>"; };
+		275618A92487919000E257A3 /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
 		F01351072230066300A34EB4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F01351092230169800A34EB4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		F013510F2232908200A34EB4 /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				F075CDA722218C8E001CA654 /* UIViewController + Storyboard.swift */,
+				275618A92487919000E257A3 /* WebImageView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				F0944936223BF059003DF40F /* NewsfeedRouter.swift in Sources */,
 				F01351082230066300A34EB4 /* NetworkService.swift in Sources */,
 				F0944937223BF059003DF40F /* NewsfeedModels.swift in Sources */,
+				275618AA2487919000E257A3 /* WebImageView.swift in Sources */,
 				F01351142234147600A34EB4 /* NetworkDataFetcher.swift in Sources */,
 				F0944935223BF059003DF40F /* NewsfeedWorker.swift in Sources */,
 				F075CD1D221DBC2A001CA654 /* AppDelegate.swift in Sources */,
