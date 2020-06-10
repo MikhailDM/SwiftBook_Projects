@@ -74,7 +74,7 @@
 ### 02_GET-POST[GET/POST Requests]
 Запросы к серверу
 
-### 03_JSON[JSON Parse][Background Download][Custom UIAlertController][CollectionView][Push Notifications]
+### 03_JSON[JSON][Background Download][UIAlertController][Push Notifications]
 Скачивание файлов в фоновом режиме. Push уведомления при загрузке
 
 ### 04_Alamofire[Alamofire]
