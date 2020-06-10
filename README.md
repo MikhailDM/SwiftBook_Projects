@@ -77,7 +77,7 @@
 ### 06_Google-Email[Google]
 Логинимся через Google/Email
 
->##   
+>##
 >## <a name="SB_UITableViewApp"></a> SB_UITableViewApp. Приложение на основе UITableView
 ### 01_MyPlaces[Realm][CoreLocation][MapKit][UITableView]
 Добавляем любимые места в свой список и сохраняем его с помощью Realm
