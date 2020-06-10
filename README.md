@@ -63,4 +63,9 @@
 ### 05_Facebook-Firebase[FBSDK][Firebase]
 Логинимся через Facebook. Храним данные в Firebase
 
+### 06_Google-Email[Google]
+Логинимся через Google/Email
+
+
+
 
