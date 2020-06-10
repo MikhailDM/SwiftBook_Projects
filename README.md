@@ -51,3 +51,5 @@
 ### 01_SimpleDownload[URLSession]
 Скачиваем изображение по URL
 
+### 02_GET-POST[GET/POST Requests]
+Запросы к серверу
