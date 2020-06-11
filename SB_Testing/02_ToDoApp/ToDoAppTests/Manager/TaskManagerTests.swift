@@ -7,28 +7,34 @@
 //
 
 import XCTest
+//Наш проект
 @testable import ToDoApp
 
 class TaskManagerTests: XCTestCase {
-    
+    //Менеджер
     var sut: TaskManager!
-
+    
     override func setUpWithError() throws {
-       sut = TaskManager()
+        //Инициализация менеджера
+        sut = TaskManager()
     }
-
+    
     override func tearDownWithError() throws {
+        //Деинициализация менеджера
         sut = nil
     }
     
+    //Проверка количества задач при инициализации
     func testInitTaskManagerWithZeroTask() {
         XCTAssertEqual(sut.tasksCount, 0)
     }
     
+    //Проверка количества выполненных задач при инициализации
     func testInitTaskManagerWithZeroDoneTask() {
         XCTAssertEqual(sut.doneTasksCount, 0)
     }
     
+    //Количество задач после создания обьекта
     func testAddTaskIncrementTasksCount() {
         let task = Task(title: "Foo")
         sut.add(task: task)
@@ -36,6 +42,7 @@ class TaskManagerTests: XCTestCase {
         XCTAssertEqual(sut.tasksCount, 1)
     }
     
+    //Проверка функции задачи по индексу
     func testTaskAtIndexIsAddedTask() {
         let task = Task(title: "Foo")
         sut.add(task: task)
@@ -55,6 +62,7 @@ class TaskManagerTests: XCTestCase {
         XCTAssertEqual(sut.doneTasksCount, 1)
     }
     
+    //Проверка массива задач после завершения одной задачи
     func testCheckedTaskRemovedFromTasks() {
         let firstTask = Task(title: "Foo")
         let secondTask = Task(title: "Bar")
@@ -63,9 +71,10 @@ class TaskManagerTests: XCTestCase {
         sut.add(task: secondTask)
         
         sut.checkTask(at: 0)
-        XCTAssertEqual(sut.task(at: 0).title, "Bar")
+        XCTAssertEqual(sut.task(at: 0), secondTask)
     }
     
+    //Проверка массива выполненых задач
     func testDoneTestAtReturnsCheckedTask() {
         let task = Task(title: "Foo")
         sut.add(task: task)
@@ -73,8 +82,29 @@ class TaskManagerTests: XCTestCase {
         sut.checkTask(at: 0)
         let returnedTask = sut.doneTask(at: 0)
         
-        XCTAssertEqual(returnedTask.title, task.title)
+        XCTAssertEqual(returnedTask, task)
     }
     
-
+    //Удаляем весь массив
+    func testRemoveAllResultsCountBeZero() {
+        sut.add(task: Task(title: "Foo"))
+        sut.add(task: Task(title: "Bar"))
+        
+        sut.checkTask(at: 0)
+        
+        sut.removeAll()
+        
+        XCTAssertTrue(sut.tasksCount == 0)
+        XCTAssertTrue(sut.doneTasksCount == 0)
+    }
+    
+    //Проверка на повторяющиеся значения
+    //Из за того что даты при инициализации различаются - сравнение идем по другим параметрам
+    func testAddingSameObjectDoesNotIncrementCount() {
+        sut.add(task: Task(title: "Foo"))
+        sut.add(task: Task(title: "Foo"))
+        
+        XCTAssertTrue(sut.tasksCount == 1 )
+    }
+    
 }

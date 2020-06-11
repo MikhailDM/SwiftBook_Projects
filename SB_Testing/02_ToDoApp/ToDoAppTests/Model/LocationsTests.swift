@@ -20,11 +20,14 @@ class LocationsTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
+    //Проверка записи имени обьекта
     func testInitSetsName() {
         let location = Location(name: "Foo")
+        
         XCTAssertEqual(location.name, "Foo")
     }
-
+    
+    //Проверка записи координат обьекта
     func testInitSsetsCoordinates() {
         let coordinate = CLLocationCoordinate2D(
             latitude: 1,

@@ -21,3 +21,14 @@ struct Task {
         self.location = location
     }
 }
+
+//Сравнение 2х обьектов
+extension Task: Equatable {
+    static func == (lhs: Task, rhs: Task) -> Bool {
+        guard
+            rhs.title == lhs.title &&
+            lhs.description == rhs.description &&
+            rhs.location == lhs.location else { return false }
+        return true
+    }
+}

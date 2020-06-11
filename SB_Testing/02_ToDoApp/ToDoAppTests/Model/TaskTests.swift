@@ -16,30 +16,35 @@ class TaskTests: XCTestCase {
         
         XCTAssertNotNil(task)
     }
+    
     //Создание  обьекта с описанием
     func testInitTaskWithTitleAndDescription() {
         let task = Task(title: "Foo", description: "Bar")
         
         XCTAssertNotNil(task)
     }
+    
     //Создание  обьекта и проверка поля task
     func testWhenGivenTitleSetsTitle() {
         let task = Task(title: "Foo")
         
         XCTAssertEqual(task.title, "Foo")
     }
+    
     //Создание  обьекта и проверка поля task и description
     func testWhenGivenDescriptionSetsDescription() {
         let task = Task(title: "Foo", description: "Bar")
         
         XCTAssertEqual(task.description, "Bar")
     }
+    
     //Установилась ли дата
     func testTaskInitWithDate() {
         let task = Task(title: "Foo")
         XCTAssertNotNil(task.date)
     }
-    //равенство полей
+    
+    //Равенство полей
     func testWhenGivenLocationSetsLocation() {
         let location = Location(name: "Foo")
         
