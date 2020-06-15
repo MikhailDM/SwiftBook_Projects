@@ -14,8 +14,7 @@ class TaskListViewController: UIViewController {
     @IBOutlet var dataProvider: DataProvider!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-    
+        super.viewDidLoad()        
     }
 
 
