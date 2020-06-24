@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2747155124A3461A00785119 /* APICientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747155024A3461A00785119 /* APICientTest.swift */; };
+		2747155324A346D000785119 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747155224A346D000785119 /* APIClient.swift */; };
+		2747155624A34EC000785119 /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747155524A34EC000785119 /* String+extensions.swift */; };
 		2747336E2492287400073310 /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747336D2492287400073310 /* TaskTests.swift */; };
 		27473370249228F200073310 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747336F249228F200073310 /* Task.swift */; };
 		2747337224922EAC00073310 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747337124922EAC00073310 /* Location.swift */; };
@@ -49,6 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2747155024A3461A00785119 /* APICientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICientTest.swift; sourceTree = "<group>"; };
+		2747155224A346D000785119 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		2747155524A34EC000785119 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 		2747336D2492287400073310 /* TaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTests.swift; sourceTree = "<group>"; };
 		2747336F249228F200073310 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		2747337124922EAC00073310 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -104,6 +110,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2747155424A34EB500785119 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2747155524A34EC000785119 /* String+extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2747336C2492282900073310 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				274733762492361200073310 /* TaskManagerTests.swift */,
+				2747155024A3461A00785119 /* APICientTest.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -125,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				27473379249236AD00073310 /* TaskManager.swift */,
+				2747155224A346D000785119 /* APIClient.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -171,6 +187,7 @@
 		358924322169FAAD00C30683 /* ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
+				2747155424A34EB500785119 /* Extensions */,
 				274733782492369C00073310 /* Managers */,
 				358924632169FAD800C30683 /* Controller */,
 				358924622169FAD000C30683 /* View */,
@@ -378,7 +395,9 @@
 			files = (
 				2747337F2492616000073310 /* DataProvider.swift in Sources */,
 				27AC4DE12497514E00E1000C /* TaskCell.swift in Sources */,
+				2747155624A34EC000785119 /* String+extensions.swift in Sources */,
 				358924362169FAAD00C30683 /* TaskListViewController.swift in Sources */,
+				2747155324A346D000785119 /* APIClient.swift in Sources */,
 				27473370249228F200073310 /* Task.swift in Sources */,
 				2752B60A24A1ECCA004B051A /* NewTaskViewController.swift in Sources */,
 				2747337A249236AD00073310 /* TaskManager.swift in Sources */,
@@ -394,6 +413,7 @@
 			files = (
 				2747336E2492287400073310 /* TaskTests.swift in Sources */,
 				274733742492300D00073310 /* LocationsTests.swift in Sources */,
+				2747155124A3461A00785119 /* APICientTest.swift in Sources */,
 				2752B60224A1D6DA004B051A /* TaskCellTests.swift in Sources */,
 				2752B60824A1ECAC004B051A /* NewTaskViewControllerTests.swift in Sources */,
 				27AC4DDD24974D5500E1000C /* DataProviderTests.swift in Sources */,
