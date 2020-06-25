@@ -156,6 +156,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		27478D6324A444D6006F48F1 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				358924482169FAAE00C30683 /* ToDoAppTests.swift */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
 		2752B60024A1D6C1004B051A /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,7 +212,7 @@
 				2747337B24925A4100073310 /* Controller */,
 				2747336C2492282900073310 /* Model */,
 				27473375249235FB00073310 /* Manager */,
-				358924482169FAAE00C30683 /* ToDoAppTests.swift */,
+				27478D6324A444D6006F48F1 /* Supporting */,
 				3589244A2169FAAE00C30683 /* Info.plist */,
 			);
 			path = ToDoAppTests;

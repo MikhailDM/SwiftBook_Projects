@@ -50,5 +50,61 @@ class TaskListViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.tableView.delegate as? DataProvider,
                        sut.tableView.dataSource as? DataProvider)
     }
+    
+    //Наличие кнопки добавления задачи
+    func testTaskListVCHasAddBarButtonWithSelfAsTarget() {
+        let target = sut.navigationItem.rightBarButtonItem?.target
+        XCTAssertEqual(target as? TaskListViewController, sut)
+    }
+    
+    //Проверка добавления задачи
+    func presentingNewTaskViewController() -> NewTaskViewController {
+        
+        guard
+            let newTaskButton = sut.navigationItem.rightBarButtonItem,
+            let action = newTaskButton.action else {
 
+                return NewTaskViewController()
+        }
+        
+        UIApplication.shared.keyWindow?.rootViewController = sut
+        sut.performSelector(onMainThread: action, with: newTaskButton, waitUntilDone: true)
+        
+        let newTaskViewController = sut.presentedViewController as! NewTaskViewController
+        return newTaskViewController
+    }
+    
+    func testAddNewTaskPresentsNewTaskViewController() {
+        let newTaskViewController = presentingNewTaskViewController()
+        XCTAssertNotNil(newTaskViewController.titleTextField)
+    }
+    
+    func testSharesSameTaskManagerWithNewTaskVC() {
+        let newTaskViewController = presentingNewTaskViewController()
+        XCTAssertTrue(newTaskViewController.taskManager === sut.dataProvider.taskManager)
+    }    
+    
+    //Перегрузка TableView
+    func testWhenViewAppearedTableViewRealoded() {
+        let mockTableView = MockTableView()
+        sut.tableView = mockTableView
+        
+        sut.beginAppearanceTransition(true, animated: true)
+        sut.endAppearanceTransition()
+        
+        XCTAssertTrue((sut.tableView as! MockTableView).isReloaded)
+    }
+
+}
+
+
+//Фейковое TableView
+@available(iOS 13.0, *)
+extension TaskListViewControllerTests {
+    class MockTableView: UITableView {
+        var isReloaded = false
+        override func reloadData() {
+            isReloaded = true
+        }
+    }
 }
