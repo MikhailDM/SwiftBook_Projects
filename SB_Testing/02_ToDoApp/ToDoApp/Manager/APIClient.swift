@@ -2,8 +2,8 @@
 //  APIClient.swift
 //  ToDoApp
 //
-//  Created by Михаил Дмитриев on 24.06.2020.
-//  Copyright © 2020 Ivan Akulov. All rights reserved.
+//  Created by Ivan Akulov on 27/10/2018.
+//  Copyright © 2018 Ivan Akulov. All rights reserved.
 //
 
 import Foundation
@@ -57,4 +57,5 @@ class APIClient {
         }.resume()
     }
 }
+
 

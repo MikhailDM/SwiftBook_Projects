@@ -2,13 +2,13 @@
 //  NewTaskViewControllerTests.swift
 //  ToDoAppTests
 //
-//  Created by Михаил Дмитриев on 23.06.2020.
-//  Copyright © 2020 Ivan Akulov. All rights reserved.
+//  Created by Ivan Akulov on 24/10/2018.
+//  Copyright © 2018 Ivan Akulov. All rights reserved.
 //
 
 import XCTest
-@testable import ToDoApp
 import CoreLocation
+@testable import ToDoApp
 
 class NewTaskViewControllerTests: XCTestCase {
 
@@ -16,6 +16,7 @@ class NewTaskViewControllerTests: XCTestCase {
     var placemark: MockCLPlacemark!
     
     override func setUp() {
+        super.setUp()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         sut = storyboard.instantiateViewController(withIdentifier: String(describing: NewTaskViewController.self)) as? NewTaskViewController
         sut.loadViewIfNeeded()
@@ -25,30 +26,34 @@ class NewTaskViewControllerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    //Наличие элементов
     func testHasTitleTextField() {
         XCTAssertTrue(sut.titleTextField.isDescendant(of: sut.view))
     }
+    
     func testHasLocationTextField() {
         XCTAssertTrue(sut.locationTextField.isDescendant(of: sut.view))
     }
+    
     func testHasDateTextField() {
         XCTAssertTrue(sut.dateTextField.isDescendant(of: sut.view))
     }
+    
     func testHasAddressTextField() {
         XCTAssertTrue(sut.addressTextField.isDescendant(of: sut.view))
     }
+    
     func testHasDescriptionTextField() {
         XCTAssertTrue(sut.descriptionTextField.isDescendant(of: sut.view))
     }
+    
     func testHasCancelButton() {
         XCTAssertTrue(sut.cancelButton.isDescendant(of: sut.view))
     }
+    
     func testHasSaveButton() {
         XCTAssertTrue(sut.saveButton.isDescendant(of: sut.view))
     }
-    
-    //Сохранение геопозиции
+
     func testSaveUsesGeocoderToConvertCoordinateFromAddress() {
         let df = DateFormatter()
         df.dateFormat = "dd.MM.yy"
@@ -78,7 +83,6 @@ class NewTaskViewControllerTests: XCTestCase {
         XCTAssertEqual(task, generatedTask)
     }
     
-    //Содержание метода Save
     func testSaveButtonHasSaveMethod() {
         let saveButton = sut.saveButton
         
@@ -89,8 +93,7 @@ class NewTaskViewControllerTests: XCTestCase {
         
         XCTAssertTrue(actions.contains("save"))
     }
-    
-    //Координаты по интернету
+
     func testGeocoderFetchesCorrectCoordinate() {
         let geocoderAnswer = expectation(description: "Geocoder answer")
         let addressString = "Уфа"
@@ -106,15 +109,14 @@ class NewTaskViewControllerTests: XCTestCase {
                     XCTFail()
                     return
             }
-            
+ 
             XCTAssertEqual(latitude, 54.7373058)
             XCTAssertEqual(longitude, 55.9722491)
             geocoderAnswer.fulfill()
         }
-        //Тайм аут
         waitForExpectations(timeout: 5, handler: nil)
     }
-    //Контроллер отпущен
+    
     func testSaveDismissesNewTaskViewController() {
         // given
         let mockNewTaskViewController = MockNewTaskViewController()
@@ -139,9 +141,6 @@ class NewTaskViewControllerTests: XCTestCase {
     }
 }
 
-
-
-//Фейковый класс
 extension NewTaskViewControllerTests {
     class MockCLGeocoder: CLGeocoder {
         
@@ -162,7 +161,6 @@ extension NewTaskViewControllerTests {
     }
 }
 
-//Фейковый класс
 extension NewTaskViewControllerTests {
     
     class MockNewTaskViewController: NewTaskViewController {

@@ -2,21 +2,22 @@
 //  DataProviderTests.swift
 //  ToDoAppTests
 //
-//  Created by Михаил Дмитриев on 15.06.2020.
-//  Copyright © 2020 Ivan Akulov. All rights reserved.
+//  Created by Ivan Akulov on 17/10/2018.
+//  Copyright © 2018 Ivan Akulov. All rights reserved.
 //
 
 import XCTest
 @testable import ToDoApp
 
 class DataProviderTests: XCTestCase {
-    
+
     var sut: DataProvider!
     var tableView: UITableView!
     
     var controller: TaskListViewController!
     
     override func setUp() {
+        super.setUp()
         sut = DataProvider()
         sut.taskManager = TaskManager()
         
@@ -29,19 +30,18 @@ class DataProviderTests: XCTestCase {
         tableView.dataSource = sut
         tableView.delegate = sut
     }
-    
+
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut.taskManager?.removeAll()
+        super.tearDown()
     }
     
-    //Количество секций - 2
     func testNumberOfSectionsIsTwo() {
         let numberOfSections = tableView.numberOfSections
         
         XCTAssertEqual(numberOfSections, 2)
     }
     
-    //Количество строк для первой секции
     func testNumberOfRowsInSectionZeroIsTasksCount() {
         sut.taskManager?.add(task: Task(title: "Foo"))
         
@@ -54,7 +54,6 @@ class DataProviderTests: XCTestCase {
         XCTAssertEqual(tableView.numberOfRows(inSection: 0), 2)
     }
     
-    //Количество строк для второй секции
     func testNumberOfRowsInSectionOneIsDoneTasksCount() {
         sut.taskManager?.add(task: Task(title: "Foo"))
         sut.taskManager?.checkTask(at: 0)
@@ -69,20 +68,17 @@ class DataProviderTests: XCTestCase {
         XCTAssertEqual(tableView.numberOfRows(inSection: 1), 2)
     }
     
-    //Проверка ячейки
     func testCellForRowAtIndexPathReturnsTaskCell() {
         sut.taskManager?.add(task: Task(title: "Foo"))
         tableView.reloadData()
         
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
         
-        XCTAssertTrue(cell is ToDoApp.TaskCell)
+        XCTAssertTrue(cell is TaskCell)
     }
     
-    //Переиспользование ячейки через Mock
     func testCellForRowAtIndexPathDequeuesCellFromTableView() {
-        let mockTableView = MockTableView.mockTableView(withDataSource: sut)
-        mockTableView.dataSource = sut
+        let mockTableView = MockTableView.mockTableView(withDataSource: sut)    
         
         sut.taskManager?.add(task: Task(title: "Foo"))
         mockTableView.reloadData()
@@ -92,7 +88,6 @@ class DataProviderTests: XCTestCase {
         XCTAssertTrue(mockTableView.cellIsDequeued)
     }
     
-    //Присваевается ли свойство Task ячейке
     func testCellForRowInSectionZeroCallsConfigure() {
         let mockTableView = MockTableView.mockTableView(withDataSource: sut)
         
@@ -105,7 +100,6 @@ class DataProviderTests: XCTestCase {
         XCTAssertEqual(cell.task, task)
     }
     
-    //Конфигурируем ячейку
     func testCellForRowInSectionOneCallsConfigure() {
         let mockTableView = MockTableView.mockTableView(withDataSource: sut)
         
@@ -121,21 +115,18 @@ class DataProviderTests: XCTestCase {
         XCTAssertEqual(cell.task, task)
     }
     
-    //Кнопка удаления
     func testDeleteButtonTitleSectionZeroShowsDone() {
         let buttonTitle = tableView.delegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: IndexPath(row: 0, section: 0))
         
         XCTAssertEqual(buttonTitle, "Done")
     }
     
-    //Кнопка удаления
     func testDeleteButtonTitleSectionOneShowsDone() {
         let buttonTitle = tableView.delegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: IndexPath(row: 0, section: 1))
         
         XCTAssertEqual(buttonTitle, "Undone")
     }
     
-    //Проверка переноса задачи
     func testCheckingTaskChecksInTaskManager() {
         let task = Task(title: "Foo")
         sut.taskManager?.add(task: task)
@@ -150,7 +141,6 @@ class DataProviderTests: XCTestCase {
         XCTAssertEqual(sut.taskManager?.doneTasksCount, 1)
     }
     
-    //Проверка переноса задачи
     func testUncheckingTaskUnchecksInTaskManager() {
         let task = Task(title: "Foo")
         sut.taskManager?.add(task: task)
@@ -168,9 +158,6 @@ class DataProviderTests: XCTestCase {
     }
 }
 
-
-
-//Фейковый TableView
 extension DataProviderTests {
     class MockTableView: UITableView {
         var cellIsDequeued = false
@@ -197,4 +184,3 @@ extension DataProviderTests {
         }
     }
 }
-

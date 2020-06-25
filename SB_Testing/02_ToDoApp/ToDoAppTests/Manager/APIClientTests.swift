@@ -1,9 +1,9 @@
 //
-//  APICientTest.swift
+//  APIClientTests.swift
 //  ToDoAppTests
 //
-//  Created by Михаил Дмитриев on 24.06.2020.
-//  Copyright © 2020 Ivan Akulov. All rights reserved.
+//  Created by Ivan Akulov on 27/10/2018.
+//  Copyright © 2018 Ivan Akulov. All rights reserved.
 //
 
 import XCTest
@@ -15,15 +15,16 @@ class APIClientTests: XCTestCase {
     var mockURLSession: MockURLSession!
     
     override func setUp() {
+        super.setUp()
         mockURLSession = MockURLSession(data: nil, urlResponse: nil, responseError: nil)
         sut = APIClient()
         sut.urlSession = mockURLSession
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
+
     func userLogin() {
         let completionHandler = {(token: String?, error: Error?) in }
         sut.login(withName: "name", password: "%qwerty", completionHandler: completionHandler)
@@ -39,7 +40,6 @@ class APIClientTests: XCTestCase {
         XCTAssertEqual(mockURLSession.urlComponents?.path, "/login")
     }
     
-    //Параметры
     func testLoginUsesExpectedQueryParameters() {
         userLogin()
         
@@ -122,29 +122,30 @@ class APIClientTests: XCTestCase {
 }
 
 extension APIClientTests {
+    
     class MockURLSession: URLSessionProtocol {
-            var url: URL?
-            private let mockDataTask: MockURLSessionDataTask
-            
-            var urlComponents: URLComponents? {
-                guard let url = url else {
-       
-                    return nil
-                }
-                return URLComponents(url: url, resolvingAgainstBaseURL: true)
+        var url: URL?
+        private let mockDataTask: MockURLSessionDataTask
+        
+        var urlComponents: URLComponents? {
+            guard let url = url else {
+
+                return nil
             }
-            
-            init(data: Data?, urlResponse: URLResponse?, responseError: Error?) {
-                mockDataTask = MockURLSessionDataTask(data: data, urlResponse: urlResponse, responseError: responseError)
-            }
-            
-            func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-                self.url = url
-                //return URLSession.shared.dataTask(with: url)
-                mockDataTask.completionHandler = completionHandler
-                return mockDataTask
-            }
+            return URLComponents(url: url, resolvingAgainstBaseURL: true)
         }
+        
+        init(data: Data?, urlResponse: URLResponse?, responseError: Error?) {
+            mockDataTask = MockURLSessionDataTask(data: data, urlResponse: urlResponse, responseError: responseError)
+        }
+        
+        func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+            self.url = url
+//            return URLSession.shared.dataTask(with: url)
+            mockDataTask.completionHandler = completionHandler
+            return mockDataTask
+        }
+    }
     
     class MockURLSessionDataTask: URLSessionDataTask {
         
@@ -172,4 +173,3 @@ extension APIClientTests {
         }
     }
 }
-

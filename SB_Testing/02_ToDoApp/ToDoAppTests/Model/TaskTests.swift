@@ -2,56 +2,78 @@
 //  TaskTests.swift
 //  ToDoAppTests
 //
-//  Created by Михаил Дмитриев on 11.06.2020.
-//  Copyright © 2020 Ivan Akulov. All rights reserved.
+//  Created by Ivan Akulov on 07/10/2018.
+//  Copyright © 2018 Ivan Akulov. All rights reserved.
 //
 
 import XCTest
 @testable import ToDoApp
 
 class TaskTests: XCTestCase {
-    //Создание  обьекта
+    
     func testInitTaskWithTitle() {
         let task = Task(title: "Foo")
         
         XCTAssertNotNil(task)
     }
     
-    //Создание  обьекта с описанием
     func testInitTaskWithTitleAndDescription() {
         let task = Task(title: "Foo", description: "Bar")
         
         XCTAssertNotNil(task)
     }
     
-    //Создание  обьекта и проверка поля task
     func testWhenGivenTitleSetsTitle() {
         let task = Task(title: "Foo")
         
         XCTAssertEqual(task.title, "Foo")
     }
     
-    //Создание  обьекта и проверка поля task и description
     func testWhenGivenDescriptionSetsDescription() {
         let task = Task(title: "Foo", description: "Bar")
         
-        XCTAssertEqual(task.description, "Bar")
+        XCTAssertTrue(task.description == "Bar")
     }
     
-    //Установилась ли дата
-    func testTaskInitWithDate() {
+    func testTaskInitsWithDate() {
         let task = Task(title: "Foo")
         XCTAssertNotNil(task.date)
     }
     
-    //Равенство полей
     func testWhenGivenLocationSetsLocation() {
         let location = Location(name: "Foo")
         
-        let task = Task(title: "Bar", description: "Baz", location: location)
+        let task = Task(title: "Bar",
+                        description: "Baz",
+                        location: location)
         
         XCTAssertEqual(location, task.location)
-        
     }
     
+    //Загрузка с Plist
+    func testCanBeCreatedFromPlistDictionary() {
+        let location = Location(name: "Baz")
+        let date = Date(timeIntervalSince1970: 10)
+        let task = Task(title: "Foo", description: "Bar", date: date, location: location)
+        
+        let locationDictionary: [String : Any] = ["name" : "Baz"]
+        let dictionary: [String : Any] = ["title" : "Foo",
+                                          "description" : "Bar",
+                                          "date" : date,
+                                          "location" : locationDictionary]
+        let createdTask = Task(dict: dictionary)
+        
+        XCTAssertEqual(task, createdTask)
+    }
+    
+    func testCanBeSerializedIntoDictionary() {
+        let location = Location(name: "Baz")
+        let date = Date(timeIntervalSince1970: 10)
+        let task = Task(title: "Foo", description: "Bar", date: date, location: location)
+        
+        let generatedTask = Task(dict: task.dict)
+        
+        XCTAssertEqual(task, generatedTask)
+    }
 }
+

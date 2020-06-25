@@ -2,10 +2,10 @@
 //  NewTaskViewController.swift
 //  ToDoApp
 //
-//  Created by Михаил Дмитриев on 23.06.2020.
-//  Copyright © 2020 Ivan Akulov. All rights reserved.
+//  Created by Ivan Akulov on 24/10/2018.
+//  Copyright © 2018 Ivan Akulov. All rights reserved.
 //
- 
+
 import UIKit
 import CoreLocation
 
@@ -35,12 +35,8 @@ class NewTaskViewController: UIViewController {
             let location = Location(name: locationString!, coordinate: coordinate)
             let task = Task(title: titleString!, description: descriptionString, date: date, location: location)
             self.taskManager.add(task: task)
-            
-            DispatchQueue.main.async {
-                self.dismiss(animated: true, completion: nil)
-            }
+            self.dismiss(animated: true, completion: nil)
         }
-        
     }
     
     var dateFormatter: DateFormatter {
@@ -48,5 +44,4 @@ class NewTaskViewController: UIViewController {
         df.dateFormat = "dd.MM.yy"
         return df
     }
-    
 }

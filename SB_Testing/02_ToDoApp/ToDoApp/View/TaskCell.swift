@@ -2,8 +2,8 @@
 //  TaskCell.swift
 //  ToDoApp
 //
-//  Created by Михаил Дмитриев on 15.06.2020.
-//  Copyright © 2020 Ivan Akulov. All rights reserved.
+//  Created by Ivan Akulov on 17/10/2018.
+//  Copyright © 2018 Ivan Akulov. All rights reserved.
 //
 
 import UIKit
@@ -21,11 +21,12 @@ class TaskCell: UITableViewCell {
     }
     
     func configure(withTask task: Task, done: Bool = false) {
+        
         if done {
             let attributedString = NSAttributedString(string: task.title, attributes: [NSAttributedString.Key.strikethroughStyle : NSUnderlineStyle.single.rawValue])
             titleLabel.attributedText = attributedString
-            dateLabel = nil
-            locationLabel = nil
+            dateLabel.text = ""
+            locationLabel.text = ""
         } else {
             let dateString = dateFormatter.string(from: task.date)
             dateLabel.text = dateString

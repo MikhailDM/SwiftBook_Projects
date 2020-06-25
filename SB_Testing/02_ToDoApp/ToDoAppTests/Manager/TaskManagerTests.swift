@@ -2,39 +2,36 @@
 //  TaskManagerTests.swift
 //  ToDoAppTests
 //
-//  Created by Михаил Дмитриев on 11.06.2020.
-//  Copyright © 2020 Ivan Akulov. All rights reserved.
+//  Created by Ivan Akulov on 15/10/2018.
+//  Copyright © 2018 Ivan Akulov. All rights reserved.
 //
 
 import XCTest
-//Наш проект
 @testable import ToDoApp
 
 class TaskManagerTests: XCTestCase {
-    //Менеджер
-    var sut: TaskManager!
     
-    override func setUpWithError() throws {
-        //Инициализация менеджера
+    var sut: TaskManager!
+
+    override func setUp() {
+        super.setUp()
         sut = TaskManager()
     }
-    
-    override func tearDownWithError() throws {
-        //Деинициализация менеджера
+
+    override func tearDown() {
+        sut.removeAll()
         sut = nil
+        super.tearDown()
     }
-    
-    //Проверка количества задач при инициализации
-    func testInitTaskManagerWithZeroTask() {
+
+    func testInitTaskManagerWithZeroTasks() {
         XCTAssertEqual(sut.tasksCount, 0)
     }
     
-    //Проверка количества выполненных задач при инициализации
-    func testInitTaskManagerWithZeroDoneTask() {
+    func testInitTaskManagerWithZeroDoneTasks() {
         XCTAssertEqual(sut.doneTasksCount, 0)
     }
     
-    //Количество задач после создания обьекта
     func testAddTaskIncrementTasksCount() {
         let task = Task(title: "Foo")
         sut.add(task: task)
@@ -42,16 +39,15 @@ class TaskManagerTests: XCTestCase {
         XCTAssertEqual(sut.tasksCount, 1)
     }
     
-    //Проверка функции задачи по индексу
     func testTaskAtIndexIsAddedTask() {
         let task = Task(title: "Foo")
         sut.add(task: task)
+        
         let returnedTask = sut.task(at: 0)
         
         XCTAssertEqual(task.title, returnedTask.title)
     }
     
-    //Проверка на количество задач после выполнения задачи
     func testCheckTaskAtIndexChangesCounts() {
         let task = Task(title: "Foo")
         sut.add(task: task)
@@ -62,20 +58,18 @@ class TaskManagerTests: XCTestCase {
         XCTAssertEqual(sut.doneTasksCount, 1)
     }
     
-    //Проверка массива задач после завершения одной задачи
     func testCheckedTaskRemovedFromTasks() {
         let firstTask = Task(title: "Foo")
         let secondTask = Task(title: "Bar")
-        
         sut.add(task: firstTask)
         sut.add(task: secondTask)
         
         sut.checkTask(at: 0)
+        
         XCTAssertEqual(sut.task(at: 0), secondTask)
     }
     
-    //Проверка массива выполненых задач
-    func testDoneTestAtReturnsCheckedTask() {
+    func testDoneTaskAtReturnsCheckedTask() {
         let task = Task(title: "Foo")
         sut.add(task: task)
         
@@ -85,11 +79,9 @@ class TaskManagerTests: XCTestCase {
         XCTAssertEqual(returnedTask, task)
     }
     
-    //Удаляем весь массив
-    func testRemoveAllResultsCountBeZero() {
+    func testRemoveAllResultsCountsBeZero() {
         sut.add(task: Task(title: "Foo"))
         sut.add(task: Task(title: "Bar"))
-        
         sut.checkTask(at: 0)
         
         sut.removeAll()
@@ -98,13 +90,29 @@ class TaskManagerTests: XCTestCase {
         XCTAssertTrue(sut.doneTasksCount == 0)
     }
     
-    //Проверка на повторяющиеся значения
-    //Из за того что даты при инициализации различаются - сравнение идем по другим параметрам
     func testAddingSameObjectDoesNotIncrementCount() {
         sut.add(task: Task(title: "Foo"))
         sut.add(task: Task(title: "Foo"))
         
-        XCTAssertTrue(sut.tasksCount == 1 )
+        XCTAssertTrue(sut.tasksCount == 1)
     }
     
+    func testWhenTaskManagerRecreatedSavedTasksShouldBeEqual() {
+        var taskManager: TaskManager! = TaskManager()
+        let task = Task(title: "Foo")
+        let task1 = Task(title: "Bar")
+        
+        taskManager.add(task: task)
+        taskManager.add(task: task1)
+        
+        NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
+        
+        taskManager = nil
+        
+        taskManager = TaskManager()
+        
+        XCTAssertEqual(taskManager.tasksCount, 2)
+        XCTAssertEqual(taskManager.task(at: 0), task)
+        XCTAssertEqual(taskManager.task(at: 1), task1)
+    }
 }

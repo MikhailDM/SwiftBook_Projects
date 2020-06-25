@@ -2,8 +2,8 @@
 //  TaskCellTests.swift
 //  ToDoAppTests
 //
-//  Created by Михаил Дмитриев on 23.06.2020.
-//  Copyright © 2020 Ivan Akulov. All rights reserved.
+//  Created by Ivan Akulov on 22/10/2018.
+//  Copyright © 2018 Ivan Akulov. All rights reserved.
 //
 
 import XCTest
@@ -13,8 +13,8 @@ class TaskCellTests: XCTestCase {
 
     var cell: TaskCell!
     
-    //Настройка
     override func setUp() {
+        super.setUp()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: String(describing: TaskListViewController.self)) as! TaskListViewController
         controller.loadViewIfNeeded()
@@ -30,7 +30,6 @@ class TaskCellTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    //Настройки ячейки
     func testCellHasTitleLabel() {
         XCTAssertNotNil(cell.titleLabel)
     }
@@ -55,7 +54,6 @@ class TaskCellTests: XCTestCase {
         XCTAssertTrue(cell.dateLabel.isDescendant(of: cell.contentView))
     }
     
-    //Отработка функции конфигурации ячейки
     func testConigureSetsTitle() {
         let task = Task(title: "Foo")
         
@@ -64,13 +62,12 @@ class TaskCellTests: XCTestCase {
         XCTAssertEqual(cell.titleLabel.text, task.title)
     }
     
-    //Правильное отображение даты
     func testConfigureSetsDate() {
         let task = Task(title: "Foo")
         
         cell.configure(withTask: task)
         let df = DateFormatter()
-        //http://nsdateformatter.com
+//        http://nsdateformatter.com
         df.dateFormat = "dd.MM.yy"
         let date = task.date
         let dateString = df.string(from: date)
@@ -78,19 +75,15 @@ class TaskCellTests: XCTestCase {
         XCTAssertEqual(cell.dateLabel.text, dateString)
     }
     
-    //Отображение локации
     func testConigureSetsLocationName() {
         let location = Location(name: "Foo")
-        let task = Task(title: "Bar",
-                        description: nil,
-                        location: location)
+        let task = Task(title: "Bar", location: location)
         
         cell.configure(withTask: task)
         
         XCTAssertEqual(cell.locationLabel.text, task.location?.name)
     }
     
-    //Выполненые задачи зачеркнуты
     func configureCellWithTask() {
         let task = Task(title: "Foo")
         cell.configure(withTask: task, done: true)
@@ -98,24 +91,21 @@ class TaskCellTests: XCTestCase {
     
     func testDoneTaskShouldStrikeThrough() {
         configureCellWithTask()
-        //Строка с атрибутами
         let attributedString = NSAttributedString(string: "Foo", attributes: [NSAttributedString.Key.strikethroughStyle : NSUnderlineStyle.single.rawValue])
         XCTAssertEqual(cell.titleLabel.attributedText, attributedString)
     }
     
-    func testDoneTaskDateLabelEqualsNil() {
+    func testDoneTaskDateLabelTextEqualsEmptyString() {
         configureCellWithTask()
-        XCTAssertNil(cell.dateLabel)
+        XCTAssertEqual(cell.dateLabel.text, "")
     }
     
-    func testDoneTaskLocationLabelEqualsNil() {
+    func testDoneTaskLocationLabelTextEqualsEmptyString() {
         configureCellWithTask()
-        XCTAssertNil(cell.locationLabel)
+        XCTAssertEqual(cell.locationLabel.text, "")
     }
 }
 
-
-//Фейковая ячейка
 extension TaskCellTests {
     class FakeDataSource: NSObject, UITableViewDataSource {
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

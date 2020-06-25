@@ -2,8 +2,8 @@
 //  DataProvider.swift
 //  ToDoApp
 //
-//  Created by Михаил Дмитриев on 11.06.2020.
-//  Copyright © 2020 Ivan Akulov. All rights reserved.
+//  Created by Ivan Akulov on 17/10/2018.
+//  Copyright © 2018 Ivan Akulov. All rights reserved.
 //
 
 import UIKit
@@ -19,10 +19,21 @@ class DataProvider: NSObject {
 
 extension DataProvider: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        
         guard let section = Section(rawValue: indexPath.section) else { fatalError() }
         switch section {
         case .todo: return "Done"
         case .done: return "Undone"
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let section = Section(rawValue: indexPath.section) else { fatalError() }
+        switch section {
+        case .todo:
+            let task = taskManager?.task(at: indexPath.row)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DidSelectRow notification"), object: self, userInfo: ["task" : task!])
+        case .done: break
         }
     }
 }
@@ -40,7 +51,7 @@ extension DataProvider: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskCell.self), for: indexPath) as! TaskCell
         
         guard let section = Section(rawValue: indexPath.section) else { fatalError() }
         guard let taskManager = taskManager else { fatalError() }
@@ -51,7 +62,7 @@ extension DataProvider: UITableViewDataSource {
         case .done: task = taskManager.doneTask(at: indexPath.row)
         }
 
-        cell.configure(withTask: task)
+        cell.configure(withTask: task, done: task.isDone)
 
         return cell
     }
@@ -61,6 +72,7 @@ extension DataProvider: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         guard
             let section = Section(rawValue: indexPath.section),
             let taskManager = taskManager else { fatalError() }
@@ -68,7 +80,8 @@ extension DataProvider: UITableViewDataSource {
         switch section {
         case .todo: taskManager.checkTask(at: indexPath.row)
         case .done: taskManager.uncheckTask(at: indexPath.row)
-        }        
+        }
+        
         tableView.reloadData()
     }
 }

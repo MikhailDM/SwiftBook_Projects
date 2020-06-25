@@ -2,68 +2,63 @@
 //  TaskListViewControllerTests.swift
 //  ToDoAppTests
 //
-//  Created by Михаил Дмитриев on 11.06.2020.
-//  Copyright © 2020 Ivan Akulov. All rights reserved.
+//  Created by Ivan Akulov on 16/10/2018.
+//  Copyright © 2018 Ivan Akulov. All rights reserved.
 //
 
 import XCTest
 @testable import ToDoApp
 
-@available(iOS 13.0, *)
 class TaskListViewControllerTests: XCTestCase {
-    
+
     var sut: TaskListViewController!
     
-    override func setUpWithError() throws {
+    override func setUp() {
+        super.setUp()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: String(describing: TaskListViewController.self))
+        let vc = storyboard.instantiateViewController(withIdentifier: String(describing: TaskListViewController.self))
         sut = vc as? TaskListViewController
+        
         sut.loadViewIfNeeded()
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    //Имеем ли TableView
-    func testWhenViewIsloadedTableViewNotNil() {
+    func testWhenViewIsLoadedTableViewNotNil() {
         XCTAssertNotNil(sut.tableView)
     }
     
-    //Провайдер
     func testWhenViewIsLoadedDataProviderIsNotNil() {
         XCTAssertNotNil(sut.dataProvider)
     }
     
-    //Delegate
-    func testEhtnViewIsLoadedTableViewDelegateIsSet() {
+    func testWhenViewIsLoadedTableViewDelegateIsSet() {
         XCTAssertTrue(sut.tableView.delegate is DataProvider)
     }
     
-    //DataSource
-    func testEhtnViewIsLoadedTableViewDataSourceIsSet() {
+    func testWhenViewIsLoadedTableViewDataSourceIsSet() {
         XCTAssertTrue(sut.tableView.dataSource is DataProvider)
     }
     
-    //From Provider
-    func testWhenIsLoadedTWDelegateEqualsTVDataSource() {
-        XCTAssertEqual(sut.tableView.delegate as? DataProvider,
-                       sut.tableView.dataSource as? DataProvider)
+    func testWhenViewIsLoadedTableViewDelegateEqualsTableViewDataSource() {
+        XCTAssertEqual(
+            sut.tableView.delegate as? DataProvider,
+            sut.tableView.dataSource as? DataProvider
+        )
     }
     
-    //Наличие кнопки добавления задачи
     func testTaskListVCHasAddBarButtonWithSelfAsTarget() {
         let target = sut.navigationItem.rightBarButtonItem?.target
         XCTAssertEqual(target as? TaskListViewController, sut)
     }
     
-    //Проверка добавления задачи
     func presentingNewTaskViewController() -> NewTaskViewController {
         
         guard
             let newTaskButton = sut.navigationItem.rightBarButtonItem,
             let action = newTaskButton.action else {
-
                 return NewTaskViewController()
         }
         
@@ -82,9 +77,8 @@ class TaskListViewControllerTests: XCTestCase {
     func testSharesSameTaskManagerWithNewTaskVC() {
         let newTaskViewController = presentingNewTaskViewController()
         XCTAssertTrue(newTaskViewController.taskManager === sut.dataProvider.taskManager)
-    }    
+    }
     
-    //Перегрузка TableView
     func testWhenViewAppearedTableViewRealoded() {
         let mockTableView = MockTableView()
         sut.tableView = mockTableView
@@ -94,17 +88,64 @@ class TaskListViewControllerTests: XCTestCase {
         
         XCTAssertTrue((sut.tableView as! MockTableView).isReloaded)
     }
-
+    
+    //Уведомления по нажатию на ячейку
+    func testTappingCellSendsNotification() {
+        let task = Task(title: "Foo")
+        sut.dataProvider.taskManager!.add(task: task)
+        
+        expectation(forNotification: NSNotification.Name(rawValue: "DidSelectRow notification"), object: nil) { notification -> Bool in
+            
+            guard let taskFromNotification = notification.userInfo?["task"] as? Task else {
+                return false
+            }
+            
+            return task == taskFromNotification
+        }
+        
+        let tableView = sut.tableView
+        tableView?.delegate?.tableView!(tableView!, didSelectRowAt: IndexPath(row: 0, section: 0))
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    func testSelectedCellNotificationPushesDetailVC() {
+        let mockNavigatonController = MockNavigationController(rootViewController: sut)
+        UIApplication.shared.keyWindow?.rootViewController = mockNavigatonController
+        
+        sut.loadViewIfNeeded()
+        
+        let task = Task(title: "Foo")
+        let task1 = Task(title: "Bar")
+        sut.dataProvider.taskManager?.add(task: task)
+        sut.dataProvider.taskManager?.add(task: task1)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DidSelectRow notification"), object: self, userInfo: ["task" : task1])
+        
+        guard let detailViewController = mockNavigatonController.pushedViewController as? DetailViewController else {
+            
+            return
+        }
+        
+        detailViewController.loadViewIfNeeded()
+    }
 }
 
-
-//Фейковое TableView
-@available(iOS 13.0, *)
 extension TaskListViewControllerTests {
     class MockTableView: UITableView {
         var isReloaded = false
         override func reloadData() {
             isReloaded = true
+        }
+    }
+}
+
+extension TaskListViewControllerTests {
+    class MockNavigationController: UINavigationController {
+        var pushedViewController: UIViewController?
+        
+        override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+            pushedViewController = viewController
+            super.pushViewController(viewController, animated: animated)
         }
     }
 }

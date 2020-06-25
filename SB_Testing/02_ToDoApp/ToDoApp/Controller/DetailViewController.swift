@@ -2,8 +2,8 @@
 //  DetailViewController.swift
 //  ToDoApp
 //
-//  Created by Михаил Дмитриев on 23.06.2020.
-//  Copyright © 2020 Ivan Akulov. All rights reserved.
+//  Created by Ivan Akulov on 23/10/2018.
+//  Copyright © 2018 Ivan Akulov. All rights reserved.
 //
 
 import UIKit
@@ -31,7 +31,7 @@ class DetailViewController: UIViewController {
         self.descriptionLabel.text = task.description
         self.locationLabel.text = task.location?.name
         self.dateLabel.text = dateFormatter.string(from: task.date)
-        //Координаты
+        
         if let coordinate = task.location?.coordinate {
             let region = MKCoordinateRegion(center: coordinate,
                                             latitudinalMeters: 100,

@@ -12,13 +12,14 @@ import XCTest
 class ToDoAppTests: XCTestCase {
 
     override func setUp() {
+        super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    //Проверка на начальный контроллер
+
     func testInitialViewControllerIsTaskListViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
